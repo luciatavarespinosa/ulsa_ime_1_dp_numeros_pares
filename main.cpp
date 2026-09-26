@@ -1,30 +1,45 @@
-// ¿Recuerdas qué hace iostream?
 #include <iostream>
 
-// ¿Por qué este include usa comillas y no < >?
-#include "utilerias.h"
-
-// ¿por qué debe existir la función main()?
 int main() {
     // 1. Constante: cantidad de números a leer
     const int CANTIDAD = 5;
 
-    // 2. Arreglo y contador (siempre inicializados)
-    //    TODO: declara el arreglo pares. ¿De qué tamaño en el peor caso?
-    //    TODO: declara totalPares. ¿Con qué valor empieza?
+    // 2. Arreglos, contador y suma (siempre inicializados)
+    int numeros[CANTIDAD];
+    int pares[CANTIDAD];
+    int totalPares = 0;
+    int sumaPares = 0;
 
     std::cout << "Guardar los numeros pares de " << CANTIDAD << " numeros\n";
+    std::cout << "Ingresa " << CANTIDAD << " numeros: ";
 
-    // 3. Ciclo: leer CANTIDAD números
-    //    TODO: lee cada número con leerEntero("Escribe un numero: ")
-    //    TODO: si el número es par, guárdalo en la siguiente posición libre
-    //    ¿Qué variable te dice cuál es la siguiente posición libre?
+    // 3. Ciclo: leer los 5 numeros, todos juntos
+    for (int i = 0; i < CANTIDAD; i++) {
+        std::cin >> numeros[i];
+    }
 
-    // 4. Salida
-    //    TODO: muestra cuántos pares se guardaron
-    //    TODO: recorre el arreglo e imprime cada par
-    //    ¿Hasta qué posición debes llegar?
+    // 4. Ciclo: revisar cuales son pares, guardarlos y sumarlos
+    for (int i = 0; i < CANTIDAD; i++) {
+        if (numeros[i] % 2 == 0) {
+            pares[totalPares] = numeros[i];
+            sumaPares += numeros[i];
+            totalPares++;
+        }
+    }
 
-    // ¿Qué significa return 0;?
+    // 5. Salida
+    std::cout << "Pares encontrados: " << totalPares << "\n";
+
+    if (totalPares == 0) {
+        std::cout << "No hay numeros pares\n";
+    } else {
+        std::cout << "Los pares son: ";
+        for (int i = 0; i < totalPares; i++) {
+            std::cout << pares[i] << " ";
+        }
+        std::cout << "\n";
+        std::cout << "Suma de los pares: " << sumaPares << "\n";
+    }
+
     return 0;
 }
